@@ -1,3 +1,10 @@
 export { actions, reducer } from "./reducers-search";
-export { isBooks, isTotalBooks } from "./selectors-search";
-export { searchBooks } from "./operations-search";
+export {
+  isItemBook,
+  isBooks,
+  isTotalBooks,
+  isLoading,
+  isCategorie,
+  getIsFilterBooks,
+} from "./selectors-search";
+export { searchBooks, openBook } from "./operations-search";

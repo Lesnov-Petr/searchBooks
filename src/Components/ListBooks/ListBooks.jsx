@@ -1,17 +1,16 @@
 import ItemBook from "../ItemBook";
-import { isBooks } from "../../redux/searchBooks";
+import { isBooks, getIsFilterBooks } from "../../redux/searchBooks";
 import { useSelector } from "react-redux";
+import styles from "./ListBooks.module.scss";
 
 const ListBooks = () => {
-  const listBooks = useSelector(isBooks);
+  const listBooks = useSelector(getIsFilterBooks);
   return (
-    <div>
-      <ul>
-        {listBooks.map((book) => (
-          <ItemBook key={book.id} isBook={book} />
-        ))}
-      </ul>
-    </div>
+    <ul className={styles.listBooks}>
+      {listBooks.map((book) => (
+        <ItemBook key={book.id} isBook={book} />
+      ))}
+    </ul>
   );
 };
 

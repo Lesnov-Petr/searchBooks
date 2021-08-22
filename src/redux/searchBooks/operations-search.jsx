@@ -6,6 +6,9 @@ const {
   searchBooksRequest,
   searchBooksError,
   totalBooksSuccess,
+  openBookRequest,
+  openBookSuccess,
+  openBookError,
 } = actions;
 
 const searchBooks = (books) => async (dispatch) => {
@@ -19,4 +22,14 @@ const searchBooks = (books) => async (dispatch) => {
   }
 };
 
-export { searchBooks };
+const openBook = (id) => async (dispatch) => {
+  dispatch(openBookRequest());
+  try {
+    const { data } = await serviceAPI.getBook(id);
+    dispatch(openBookSuccess(data));
+  } catch (error) {
+    dispatch(openBookError(error.message));
+  }
+};
+
+export { searchBooks, openBook };

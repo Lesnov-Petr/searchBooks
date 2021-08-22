@@ -1,14 +1,16 @@
 import { Route, Switch } from "react-router-dom";
 import HomePage from "../views/HomePage";
-import Windows from "../views/WindowsPage";
-// import "./sass/main.scss";
+import BookPage from "../views/BookPage";
+import Header from "../Components/Header";
+import "../sass/main.scss";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
+      <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/windows" component={Windows} />
+        <Route path="/book" component={BookPage} />
       </Switch>
     </div>
   );

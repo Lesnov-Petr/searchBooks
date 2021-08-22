@@ -2,8 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialSearchBooks = {
   listBooks: [],
+  isBook: {},
   totalBooks: 0,
   isLoading: false,
+  isCategoie: "",
 };
 
 const { actions, reducer } = createSlice({
@@ -11,6 +13,13 @@ const { actions, reducer } = createSlice({
   initialState: initialSearchBooks,
   error: null,
   reducers: {
+    totalBooksSuccess: (state, { payload }) => {
+      state.totalBooks = payload;
+      state.isLoading = false;
+    },
+    categorieBooksSuccess: (state, { payload }) => {
+      state.isCategoie = payload;
+    },
     searchBooksSuccess: (state, { payload }) => {
       state.listBooks = payload;
       state.isLoading = false;
@@ -25,8 +34,15 @@ const { actions, reducer } = createSlice({
       state.isLoading = false;
     },
 
-    totalBooksSuccess: (state, { payload }) => {
-      state.totalBooks = payload;
+    openBookRequest: (state) => {
+      state.isLoading = true;
+    },
+    openBookSuccess: (state, { payload }) => {
+      state.isBook = payload;
+      state.isLoading = false;
+    },
+    openBookError: (state, { payload }) => {
+      state.error = payload;
       state.isLoading = false;
     },
   },
